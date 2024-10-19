@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro TV Intro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+      body {
+        font-family: "Press Start 2P", cursive;
+        background-color: #000000;
+        color: #00ff00;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      .crt::before {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(255, 215, 0, 0.1),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06)
+          );
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+
+      .tv-layers {
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 2000px;
+        z-index: 50;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .tv-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+      }
+
+      .tv {
+        width: 80vmin;
+        height: 60vmin;
+        position: relative;
+        transform-style: preserve-3d;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .tv-frame {
+        position: absolute;
+        inset: 0;
+        margin-bottom: 100px;
+        background-image: url("./src/assets/img/old-tv.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .tv-screen {
+        position: absolute;
+        top: 20%;
+        left: 15%;
+        width: 70%;
+        height: 55%;
+        background: #000;
+        overflow: hidden;
+      }
+
+      .tv-layer {
+        position: absolute;
+        width: 80vmin;
+        height: 60vmin;
+        transform-style: preserve-3d;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .tv-screen::before,
+      .tv-layer .tv-screen::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          transparent 50%,
+          rgba(211, 211, 211, 0.534) 50%
+        );
+        background-size: 100% 4px;
+        animation: scan 1s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes scan {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(4px);
+        }
+      }
+
+      .static {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+        opacity: 0.5;
+        mix-blend-mode: screen;
+        pointer-events: none;
+      }
+
+      .tv-content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        opacity: 0;
+      }
+
+      .channel-text {
+        position: absolute;
+        top: 5%;
+        right: 15%;
+        color: rgba(255, 215, 0, 0.9);
+        font-size: 1.5vmin;
+        z-index: 3;
+      }
+
+      .glitch {
+        color: #ffd700;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+      }
+
+      @keyframes glitch {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      .background-text {
+        position: fixed;
+        top: -400px;
+        left: -300px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        font-family: "Press Start 2P", cursive;
+        font-size: clamp(1rem, 3vw, 2rem);
+        color: rgba(255, 238, 0, 0.1);
+        user-select: none;
+        pointer-events: none;
+        z-index: -1;
+        padding: 2rem;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .background-text p {
+        animation: textFloat 20s linear infinite;
+        width: 100%;
+        white-space: pre-wrap;
+      }
+
+      @keyframes textFloat {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(-100%);
+        }
+      }
+
+
+      .marquee {
+        width: 100%;
+        overflow: hidden;
+        background: #0f0;
+        color: #000;
+      }
+
+      .marquee-content {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 20s linear infinite;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(100%);
+        }
+
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .skill-bar-container {
+        width: 100%;
+        height: 20px;
+        background-color: #000;
+        border: 2px solid #0f0;
+        margin-bottom: 5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-bar {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .skill-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-image: linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.2) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 0.2) 75%,
+          transparent 75%,
+          transparent
+        );
+        z-index: 1;
+        background-size: 50px 50px;
+        animation: move 2s linear infinite;
+        overflow: hidden;
+      }
+
+      @keyframes move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 50px 50px;
+        }
+      }
+
+      .beginner {
+        background-color: #ff0000;
+        width: 33%;
+      }
+      .intermediate {
+        background-color: #ffff00;
+        width: 66%;
+      }
+      .master {
+        background-color: #00ff00;
+        width: 100%;
+      }
+
+      .media-card {
+        border: 2px solid #0f0;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow: auto;
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        transition: transform 0.3s ease-out;
+      }
+
+      .modal-content.show {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body class="crt">
+    <div id="intro" class="tv-layers">
+      <div class="background-text">
+        <p>
+          Darkness, endless, despair, fear no more <br>
+          Coldness, blackened, no sound, feel no pain <br>
+          Captured, helpless, ultimate, dreadful fate <br>
+          Powerless, lifeless, no breath, falling down <br>
+        </p>
+        <p>
+          Darkness, endless, despair, fear no more <br>
+          Coldness, blackened, no sound, feel no pain <br>
+          Captured, helpless, ultimate, dreadful fate <br>
+          Powerless, lifeless, no breath, falling down <br>
+        </p>
+        <p>
+          Darkness, endless, despair, fear no more <br>
+          Coldness, blackened, no sound, feel no pain <br>
+          Captured, helpless, ultimate, dreadful fate <br>
+          Powerless, lifeless, no breath, falling down <br>
+        </p>
+      </div>
+      <div class="tv-container">
+        <!-- Main TV -->
+        <div class="tv">
+          <div class="tv-frame"></div>
+          <div class="tv-screen">
+            <div class="static"></div>
+          </div>
+          <div
+            class="tv-content flex flex-col justify-center items-center absolute inset-0 opacity-0 text-center"
+          ></div>
+        </div>
+
+        <!-- Layer 2 TV -->
+        <div
+          class="tv-layer"
+          style="transform: scale(0.8) translateZ(-600px) rotate(15deg)"
+        >
+          <div class="tv-frame"></div>
+          <div class="tv-screen">
+            <div class="static"></div>
+          </div>
+        </div>
+
+        <!-- Layer 3 TV -->
+        <div
+          class="tv-layer"
+          style="transform: scale(0.6) translateZ(-700px) rotate(30deg)"
+        >
+          <div class="tv-frame"></div>
+          <div class="tv-screen">
+            <div class="static"></div>
+          </div>
+        </div>
+
+        <!-- Layer 4 TV -->
+        <div
+          class="tv-layer"
+          style="transform: scale(0.4) translateZ(-1100px) rotate(45deg)"
+        >
+          <div class="tv-frame"></div>
+          <div class="tv-screen">
+            <div class="static"></div>
+          </div>
+        </div>
+
+        <!-- Layer 5 TV -->
+        <div
+          class="tv-layer"
+          style="transform: scale(0.2) translateZ(-1700px) rotate(60deg)"
+        >
+          <div class="tv-frame"></div>
+          <div class="tv-screen">
+            <div class="static"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="hidden w-9/12 mx-auto">
+      <div class="marquee mb-8 rounded-lg">
+        <div class="marquee-content py-2">
+          WELCOME TO NAS'S MIDNIGHT CHANNEL * SCROLL DOWN TO SEE NAS'S DOCUMENTS
+          * DON'T GET LOST *
+        </div>
+      </div>
+
+      <section class="mb-12" id="banner">
+        <h2 class="text-2xl mb-4 text-center">About Me</h2>
+        <p class="mb-4">
+          Greetings, fellow time traveler! I'm a passionate developer with a
+          love for all things retro and a knack for creating cutting-edge
+          solutions.
+        </p>
+      </section>
+
+      <section class="mb-12" id="media">
+        <h2 class="text-2xl mb-4 text-center">Media Showcase</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div
+            class="media-card rounded-lg"
+            onclick="openModal('https://placekitten.com/400/300')"
+          >
+            <img
+              src="https://placekitten.com/400/300"
+              alt="Sample Image"
+              class="w-full"
+            />
+            <p class="mt-2">Retro Cat</p>
+          </div>
+          <div
+            class="media-card rounded-lg"
+            onclick="openModal('https://www.w3schools.com/html/mov_bbb.mp4', true)"
+          >
+            <video class="w-full">
+              <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <p class="mt-2">Retro Video</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12" id="skills">
+        <h2 class="text-2xl mb-4 text-center">Skills</h2>
+        <div class="skill">
+          <p class="mb-2">HTML/CSS</p>
+          <div class="skill-bar-container rounded-lg">
+            <div class="skill-bar master" style="width: 33%"></div>
+          </div>
+          <p class="text-right">MASTER</p>
+        </div>
+        <div class="skill">
+          <p class="mb-2">JavaScript</p>
+          <div class="skill-bar-container rounded-lg">
+            <div class="skill-bar intermediate" style="width: 66%"></div>
+          </div>
+          <p class="text-right">INTERMEDIATE</p>
+        </div>
+        <div class="skill">
+          <p class="mb-2">Retro Design</p>
+          <div class="skill-bar-container rounded-lg">
+            <div class="skill-bar beginner" style="width: 100%"></div>
+          </div>
+          <p class="text-right">BEGINNER</p>
+        </div>
+      </section>
+
+      <section class="mb-12" id="achievements">
+        <h2 class="text-2xl mb-4 text-center">Achievements</h2>
+        <ul class="list-disc list-inside">
+          <li class="mb-2">
+            Won the "Best Retro Website" award at WebDevCon '85
+          </li>
+          <li class="mb-2">
+            Created a time machine using only HTML and CSS (theoretical)
+          </li>
+          <li class="mb-2">Mastered the art of coding without a mouse</li>
+        </ul>
+      </section>
+
+      <footer class="py-8 text-center">
+        <p>&copy; 1985 Retro Developer. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
+      <video class="modal-content" id="modalVideo" controls>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap
+        .timeline()
+        .from(".tv, .tv-layer", {
+          duration: 0.8,
+          scale: 0,
+          opacity: 0,
+          rotation: -45,
+          stagger: 0.1,
+          ease: "power2.out",
+        })
+        .to(".static", {
+          duration: 0.3,
+          opacity: 0.5,
+          ease: "none",
+        })
+        .to(".tv-content", {
+          duration: 0.3,
+          opacity: 1,
+          ease: "none",
+          onComplete: enterWebsite,
+        });
+
+      function showContent() {
+        let content = document.getElementById("content");
+        content.classList.remove = "hidden";
+      }
+
+      function enterWebsite() {
+        const layers = gsap.utils.toArray(".tv-layer");
+
+        const tl = gsap.timeline();
+
+        // Zoom through each TV layer
+        tl.to(".tv-content", {
+          duration: 0.3,
+          scale: 0.8,
+          opacity: 0,
+          ease: "power2.in",
+        })
+          .to(".tv", {
+            duration: 1,
+            scale: 4,
+            z: 1000,
+            opacity: 0,
+            ease: "power2.in",
+          })
+          .to(
+            layers,
+            {
+              duration: 0.8,
+              scale: 4,
+              z: 1000,
+              opacity: 0,
+              stagger: 0.2,
+              ease: "power2.in",
+            },
+            "-=0.8"
+          )
+          .to("#intro", {
+            duration: 0.3,
+            opacity: 0,
+            display: "none",
+            ease: "power2.inOut",
+            onComplete: () => {
+              document.getElementById("content")?.classList.remove("hidden");
+              animateContent();
+            },
+          });
+      }
+
+      function animateContent() {
+        gsap.from("header", {
+          duration: 1,
+          y: -50,
+          opacity: 0,
+          ease: "power2.out",
+        });
+        gsap.from(".marquee", {
+          duration: 1,
+          x: "100%",
+          ease: "power2.out",
+          delay: 0.5,
+        });
+        gsap.from("section", {
+          duration: 1,
+          y: 50,
+          opacity: 0,
+          ease: "power2.out",
+          stagger: 0.2,
+          delay: 1,
+        });
+
+        gsap.to(".skill-bar", {
+          width: function (index, target) {
+            return target.style.width;
+          },
+          duration: 1.5,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: "#skills",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "restart none none reverse",
+          },
+        });
+
+        gsap.to(".skill-bar", {
+          width: function (index, target) {
+            return target.style.width;
+          },
+          duration: 1.5,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: "#skills",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "restart none none reverse",
+          },
+        });
+      }
+
+      function openModal(src, isVideo = false) {
+        const modal = document.getElementById("myModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalVideo = document.getElementById("modalVideo");
+
+        modal.style.display = "block";
+
+        if (isVideo) {
+          modalVideo.src = src;
+          modalVideo.style.display = "block";
+          modalImage.style.display = "none";
+          setTimeout(() => modalVideo.classList.add("show"), 10);
+        } else {
+          modalImage.src = src;
+          modalImage.style.display = "block";
+          modalVideo.style.display = "none";
+          setTimeout(() => modalImage.classList.add("show"), 10);
+        }
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("myModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalVideo = document.getElementById("modalVideo");
+
+        modalImage.classList.remove("show");
+        modalVideo.classList.remove("show");
+
+        setTimeout(() => {
+          modal.style.display = "none";
+          modalVideo.pause();
+        }, 300);
+      }
+
+      document.querySelector(".close").onclick = closeModal;
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("myModal");
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>
