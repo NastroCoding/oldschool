@@ -349,6 +349,7 @@ body {
     black 0.00085%
   );
   animation: tv-static 0.2s infinite;
+  pointer-events: none;
 }
 
 .scanline-content {

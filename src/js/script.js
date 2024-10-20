@@ -29,7 +29,7 @@ function showContent() {
 
 function enterWebsite() {
   const layers = gsap.utils.toArray(".tv-layer");
-  const backtext = document.getElementById('background-text-content')
+  const backtext = document.getElementById("background-text-content");
   const tl = gsap.timeline();
 
   // Zoom through each TV layer
@@ -133,9 +133,21 @@ const tvData = [
     thumbnail: "SIGNAL SEARCHING...",
     content: ` 
           <h2 class="text-xl mb-4">Contact</h2>
-          <p>Find me in the retro dimension:</p>
-          <p>🕹️ @retrodev</p>
-          <p>📺 hello@retro.dev</p>
+          <p class="mb-2">Find me:</p>
+          <div class="flex flex-col space-y-2">
+              <a href="https://instagram.com/retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-instagram mr-2"></i> @retrodev
+              </a>
+              <a href="https://youtube.com/c/retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-youtube mr-2"></i> youtube.com/c/retrodev
+              </a>
+              <a href="https://github.com/retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-github mr-2"></i> github.com/retrodev
+              </a>
+              <a href="https://tiktok.com/@retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-tiktok mr-2"></i> @retrodev
+              </a>
+          </div>
         `,
   },
   {
@@ -145,9 +157,9 @@ const tvData = [
     content: ` 
           <h2 class="text-xl mb-4">Achievements</h2>
           <ul>
-            <li>Best Retro Website Award</li>
-            <li>Pixel Perfect Designer 2024</li>
-            <li>Time Travel Champion</li>
+            <li>1st Place LKS South Jakarta 2023</li>
+            <li>2nd Runner-up LKS Provincial South Jakarta 2023</li>
+            <li>2nd Place LKS South Jakarta 2024</li>
           </ul>
         `,
   },
@@ -158,8 +170,8 @@ const tvData = [
     content: ` 
           <h2 class="text-xl mb-4">Media</h2>
           <div class="grid grid-cols-2 gap-2">
-            <div class="border border-green-500 p-1">Project 1</div>
-            <div class="border border-green-500 p-1">Project 2</div>
+            <div class="border border-yellow-500 p-1">Project 1</div>
+            <div class="border border-yellow-500 p-1">Project 2</div>
           </div>
         `,
   },
@@ -298,24 +310,24 @@ gsap.from(".tv-item-content", {
   },
 });
 
-const textBackground = document.getElementById('textBackground');
+const textBackground = document.getElementById("textBackground");
 const text = "THEMIDNIGHTCHANNELTVWORLDGOLDENERA";
 
 function fillBackground() {
-    // Clear existing content
-    textBackground.innerHTML = '';
-    
-    // Calculate the number of lines needed based on actual viewport height
-    const spanHeight = 80; // Approximate height in pixels (5rem ≈ 80px)
-    const viewportHeight = window.innerHeight;
-    const numberOfLines = Math.ceil(viewportHeight / spanHeight) + 2;
-    
-    // Create and append spans
-    for (let i = 0; i < numberOfLines; i++) {
-        const span = document.createElement('span');
-        span.textContent = text;
-        textBackground.appendChild(span);
-    }
+  // Clear existing content
+  textBackground.innerHTML = "";
+
+  // Calculate the number of lines needed based on actual viewport height
+  const spanHeight = 80; // Approximate height in pixels (5rem ≈ 80px)
+  const viewportHeight = window.innerHeight;
+  const numberOfLines = Math.ceil(viewportHeight / spanHeight) + 2;
+
+  // Create and append spans
+  for (let i = 0; i < numberOfLines; i++) {
+    const span = document.createElement("span");
+    span.textContent = text;
+    textBackground.appendChild(span);
+  }
 }
 
 // Initialize and handle window resize
@@ -324,6 +336,6 @@ window.addEventListener("resize", fillBackground);
 
 // If you have other initialization functions, include them here
 window.addEventListener("load", () => {
-    if (typeof initializeTVs === 'function') initializeTVs();
-    if (typeof initializeInterface === 'function') initializeInterface();
+  if (typeof initializeTVs === "function") initializeTVs();
+  if (typeof initializeInterface === "function") initializeInterface();
 });
