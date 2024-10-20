@@ -1,0 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  /* font-family: 'Share Tech Mono', monospace; */
+  font-family: "Press Start 2P", cursive;
+  background-color: #000000;
+  color: #ffd700;
+  overflow: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 215, 0, 0.15),
+      rgba(255, 215, 0, 0.05),
+      rgba(255, 215, 0, 0.1)
+    );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.tv-layers {
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 2000px;
+  z-index: 50;
+  overflow: hidden;
+  position: relative;
+}
+
+.tv-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.tv {
+  width: 80vmin;
+  height: 60vmin;
+  position: relative;
+  transform-style: preserve-3d;
+  background: transparent;
+  overflow: hidden;
+}
+
+.tv-frame {
+  position: absolute;
+  inset: 0;
+  margin-bottom: 100px;
+  background-image: url("../assets/img/old-tv.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tv-screen {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 70%;
+  height: 55%;
+  background: #111;
+  overflow: hidden;
+}
+
+.tv-layer {
+  position: absolute;
+  width: 80vmin;
+  height: 60vmin;
+  transform-style: preserve-3d;
+  background: transparent;
+  overflow: hidden;
+}
+
+.tv-screen::before,
+.tv-layer .tv-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 50%, rgba(211, 211, 211, 0.534) 50%);
+  background-size: 100% 4px;
+  animation: scan 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+.static {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 215, 0, 0.2),
+    rgba(255, 215, 0, 0.2) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.3;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.tv-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  opacity: 0;
+}
+
+.channel-text {
+  position: absolute;
+  top: 5%;
+  right: 15%;
+  font-family: 'Russo One', sans-serif;
+  color: #ffd700;
+  font-size: 1.8vmin;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.glitch {
+  color: #ffd700;
+  text-shadow: 
+    2px 2px 0px #000,
+    -2px -2px 0px #000,
+    4px 4px 10px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.background-text {
+  position: fixed;
+  top: -400px;
+  left: -300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", cursive;
+  font-size: clamp(1rem, 3vw, 2rem);
+  color: rgba(255, 215, 0, 0.15);
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+  padding: 2rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.background-text p {
+  animation: textFloat 20s linear infinite;
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+@keyframes textFloat {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.circle-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}
+
+#glowName {
+  font-size: 4rem;
+  color: #ffd700;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+}
+
+@keyframes pixelFlicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+}
+
+@keyframes signal-search {
+  0% {
+    background-position: 0% 0%;
+    filter: brightness(1) contrast(1);
+  }
+  25% {
+    background-position: -20% -20%;
+    filter: brightness(1.2) contrast(1.2);
+  }
+  50% {
+    background-position: 20% 20%;
+    filter: brightness(0.8) contrast(1.5);
+  }
+  75% {
+    background-position: -10% 10%;
+    filter: brightness(1.1) contrast(0.9);
+  }
+  100% {
+    background-position: 0% 0%;
+    filter: brightness(1) contrast(1);
+  }
+}
+
+@keyframes tv-static {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1%, -1%);
+  }
+  50% {
+    transform: translate(1%, 1%);
+  }
+  75% {
+    transform: translate(-1%, 1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes tv-on {
+  0% {
+    filter: brightness(0);
+    transform: scale(0.98);
+  }
+  20% {
+    filter: brightness(2);
+  }
+  40% {
+    filter: brightness(0.5);
+  }
+  60% {
+    filter: brightness(1.5);
+  }
+  80% {
+    filter: brightness(0.8);
+  }
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+.tv-frame-content {
+  position: relative;
+  background-color: rgb(31, 41, 55);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.tv-frame-content:hover {
+  transform: scale(1.05);
+}
+
+.tv-screen-content {
+  position: relative;
+  background-color: black;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.tv-static-content {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image: repeating-radial-gradient(
+    circle at 17% 32%,
+    rgba(255, 215, 0, 0.1),
+    black 0.00085%
+  );
+  animation: tv-static 0.2s infinite;
+}
+
+.scanline-content {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.5) 51%
+  );
+  background-size: 100% 4px;
+}
+
+.tv-content-content {
+  padding: 1rem;
+  color: #ffd700;
+  opacity: 0.8;
+  height: 100%;
+  overflow: auto;
+  display: none;
+  font-family: 'Share Tech Mono', monospace;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 215, 0, 0.1) 0px,
+      rgba(255, 215, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+}
+
+.tv-content-content.active {
+  display: block;
+  animation: tv-on 0.5s ease-out;
+}
+
+.tv-thumbnail {
+  padding: 1rem;
+  color: #ffd700;
+  opacity: 0.8;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  text-align: center;
+  position: relative;
+  animation: signal-search 3s infinite;
+  text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.5);
+}
+
+.tv-thumbnail::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.1) 45%,
+    rgba(255, 215, 0, 0.2) 50%,
+    rgba(255, 215, 0, 0.1) 55%,
+    transparent 100%
+  );
+  animation: signal-search 4s infinite;
+  box-shadow: inset 0 0 50px rgba(255, 215, 0, 0.3);
+}
+
+.tv-label-content {
+  text-align: center;
+  color: #ffd700;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  font-family: 'Russo One', sans-serif;
+}
+
+.expanded-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 91.666667%;
+  max-width: 42rem;
+  z-index: 50;
+}
+
+.expanded-content .tv-frame-content {
+  cursor: default;
+}
+
+.expanded-content .tv-frame-content:hover {
+  transform: none;
+}
+
+.expanded-content .tv-content-content {
+  opacity: 1;
+}
+
+.tv-content-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tv-content-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.tv-content-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 4px;
+}
+
+.tv-content-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.7);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  padding-left: 100%;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.signal-bars {
+  animation: signalFlicker 2s infinite;
+}
+
+.channel-display {
+  font-size: 1.25rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  font-family: 'Russo One', sans-serif;
+}
+
+.time-display {
+  font-size: 1.25rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.tv-content-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffd700;
+  animation: scanline 6s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes signalFlicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.text-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.text-background span {
+  color: rgb(62, 63, 77); /* Light green text with some opacity */
+  font-size: 5rem; /* Adjust size based on your needs */
+  line-height: 1; /* Set line-height to 1 for no spacing */
+  margin: 0; /* Remove margin */
+}
