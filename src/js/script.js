@@ -98,7 +98,7 @@ const tvData = [
     thumbnail: "SIGNAL SEARCHING...",
     content: ` 
           <h2 class="text-xl mb-4">About Me</h2>
-          <p>Greetings, fellow time traveler! I'm a passionate developer with a love for all things retro.</p>
+          <p>I’m good at programming, web development, problem-solving, and fixing computer issues. I’ve also won a few local and regional competitions. I can work on my own or with a team, no problem.</p>
         `,
   },
   {
@@ -106,11 +106,20 @@ const tvData = [
     label: "Skills",
     thumbnail: "SIGNAL SEARCHING...",
     content: ` 
-          <h2 class="text-xl mb-4">Skills</h2>
-          <ul>
-            <li>HTML/CSS - Master</li>
-            <li>JavaScript - Intermediate</li>
-            <li>Retro Design - Expert</li>
+          <h2 class="text-xl mb-4 font-semibold">Skills</h2>
+          <ul class="space-y-4">
+            <li class="border *:border-gray-100 p-4 rounded-lg shadow">
+              <h3 class="text-lg font-semibold mb-2">Front-End Development</h3>
+              <p>Proficient in HTML, CSS, and JavaScript, with the ability to manipulate the DOM using JavaScript.</p>
+            </li>
+            <li class="border border-gray-100 p-4 rounded-lg shadow">
+              <h3 class="text-lg font-semibold mb-2">Back-End Development</h3>
+              <p>Experienced in PHP programming and capable of building applications using the Laravel framework.</p>
+            </li>
+            <li class="border border-gray-100 p-4 rounded-lg shadow">
+              <h3 class="text-lg font-semibold mb-2">CSS Frameworks</h3>
+              <p>Skilled in using TailwindCSS and Bootstrap for developing modern, responsive user interfaces.</p>
+            </li>
           </ul>
         `,
   },
@@ -121,9 +130,8 @@ const tvData = [
     content: ` 
           <h2 class="text-xl mb-4">Projects</h2>
           <ul>
-            <li>Retro Game Collection</li>
-            <li>Vintage Computer Museum</li>
-            <li>Time Machine Interface</li>
+            <li>Travel Website with built-in CMS</li>
+            <li>Advance Quiz App with multiple type of question and answer</li>
           </ul>
         `,
   },
@@ -135,17 +143,17 @@ const tvData = [
           <h2 class="text-xl mb-4">Contact</h2>
           <p class="mb-2">Find me:</p>
           <div class="flex flex-col space-y-2">
-              <a href="https://instagram.com/retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
-                  <i class="fa-brands fa-instagram mr-2"></i> @retrodev
+              <a href="https://instagram.com/nastromeister" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-instagram mr-2"></i> @nastromeister
               </a>
-              <a href="https://youtube.com/c/retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
-                  <i class="fa-brands fa-youtube mr-2"></i> youtube.com/c/retrodev
+              <a href="https://github.com/NastroCoding" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-github mr-2"></i> NastroCoding
               </a>
-              <a href="https://github.com/retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
-                  <i class="fa-brands fa-github mr-2"></i> github.com/retrodev
+              <a href="https://www.youtube.com/@nastromeister" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-youtube mr-2"></i> @nastromeister
               </a>
-              <a href="https://tiktok.com/@retrodev" target="_blank" class="flex items-center pl-0 p-2 transition">
-                  <i class="fa-brands fa-tiktok mr-2"></i> @retrodev
+              <a href="https://steamcommunity.com/id/nastromeister/" target="_blank" class="flex items-center pl-0 p-2 transition">
+                  <i class="fa-brands fa-steam mr-2"></i> Nastro
               </a>
           </div>
         `,
