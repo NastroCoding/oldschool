@@ -231,145 +231,6 @@
           transform: translateY(-100%);
         }
       }
-
-
-      .marquee {
-        width: 100%;
-        overflow: hidden;
-        background: #0f0;
-        color: #000;
-      }
-
-      .marquee-content {
-        display: inline-block;
-        white-space: nowrap;
-        animation: marquee 20s linear infinite;
-      }
-
-      @keyframes marquee {
-        0% {
-          transform: translateX(100%);
-        }
-
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-
-      .skill-bar-container {
-        width: 100%;
-        height: 20px;
-        background-color: #000;
-        border: 2px solid #0f0;
-        margin-bottom: 5px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .skill-bar {
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-
-      .skill-bar::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-image: linear-gradient(
-          -45deg,
-          rgba(255, 255, 255, 0.2) 25%,
-          transparent 25%,
-          transparent 50%,
-          rgba(255, 255, 255, 0.2) 50%,
-          rgba(255, 255, 255, 0.2) 75%,
-          transparent 75%,
-          transparent
-        );
-        z-index: 1;
-        background-size: 50px 50px;
-        animation: move 2s linear infinite;
-        overflow: hidden;
-      }
-
-      @keyframes move {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 50px 50px;
-        }
-      }
-
-      .beginner {
-        background-color: #ff0000;
-        width: 33%;
-      }
-      .intermediate {
-        background-color: #ffff00;
-        width: 66%;
-      }
-      .master {
-        background-color: #00ff00;
-        width: 100%;
-      }
-
-      .media-card {
-        border: 2px solid #0f0;
-        padding: 20px;
-        margin-bottom: 20px;
-        text-align: center;
-        cursor: pointer;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        overflow: auto;
-      }
-
-      .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.1);
-        transition: transform 0.3s ease-out;
-      }
-
-      .modal-content.show {
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-
-      .close:hover,
-      .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-      }
     </style>
   </head>
 
@@ -377,22 +238,22 @@
     <div id="intro" class="tv-layers">
       <div class="background-text">
         <p>
-          Darkness, endless, despair, fear no more <br>
-          Coldness, blackened, no sound, feel no pain <br>
-          Captured, helpless, ultimate, dreadful fate <br>
-          Powerless, lifeless, no breath, falling down <br>
+          Darkness, endless, despair, fear no more <br />
+          Coldness, blackened, no sound, feel no pain <br />
+          Captured, helpless, ultimate, dreadful fate <br />
+          Powerless, lifeless, no breath, falling down <br />
         </p>
         <p>
-          Darkness, endless, despair, fear no more <br>
-          Coldness, blackened, no sound, feel no pain <br>
-          Captured, helpless, ultimate, dreadful fate <br>
-          Powerless, lifeless, no breath, falling down <br>
+          Darkness, endless, despair, fear no more <br />
+          Coldness, blackened, no sound, feel no pain <br />
+          Captured, helpless, ultimate, dreadful fate <br />
+          Powerless, lifeless, no breath, falling down <br />
         </p>
         <p>
-          Darkness, endless, despair, fear no more <br>
-          Coldness, blackened, no sound, feel no pain <br>
-          Captured, helpless, ultimate, dreadful fate <br>
-          Powerless, lifeless, no breath, falling down <br>
+          Darkness, endless, despair, fear no more <br />
+          Coldness, blackened, no sound, feel no pain <br />
+          Captured, helpless, ultimate, dreadful fate <br />
+          Powerless, lifeless, no breath, falling down <br />
         </p>
       </div>
       <div class="tv-container">
@@ -453,104 +314,356 @@
       </div>
     </div>
 
-    <div id="content" class="hidden w-9/12 mx-auto">
-      <div class="marquee mb-8 rounded-lg">
-        <div class="marquee-content py-2">
-          WELCOME TO NAS'S MIDNIGHT CHANNEL * SCROLL DOWN TO SEE NAS'S DOCUMENTS
-          * DON'T GET LOST *
-        </div>
+    <div id="content" class="w-full max-w-6xl mx-auto p-4">
+      <div class="tv-container-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="tvContainerContent">
+        <div class="overlay-content fixed inset-0 bg-black/50 hidden z-40" id="overlayContent"></div>
+        <div class="close-btn-content fixed top-4 right-4 text-white text-4xl cursor-pointer hidden z-50" id="closeBtnContent">×</div>
       </div>
-
-      <section class="mb-12" id="banner">
-        <h2 class="text-2xl mb-4 text-center">About Me</h2>
-        <p class="mb-4">
-          Greetings, fellow time traveler! I'm a passionate developer with a
-          love for all things retro and a knack for creating cutting-edge
-          solutions.
-        </p>
-      </section>
-
-      <section class="mb-12" id="media">
-        <h2 class="text-2xl mb-4 text-center">Media Showcase</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div
-            class="media-card rounded-lg"
-            onclick="openModal('https://placekitten.com/400/300')"
-          >
-            <img
-              src="https://placekitten.com/400/300"
-              alt="Sample Image"
-              class="w-full"
-            />
-            <p class="mt-2">Retro Cat</p>
-          </div>
-          <div
-            class="media-card rounded-lg"
-            onclick="openModal('https://www.w3schools.com/html/mov_bbb.mp4', true)"
-          >
-            <video class="w-full">
-              <source
-                src="https://www.w3schools.com/html/mov_bbb.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-            <p class="mt-2">Retro Video</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="mb-12" id="skills">
-        <h2 class="text-2xl mb-4 text-center">Skills</h2>
-        <div class="skill">
-          <p class="mb-2">HTML/CSS</p>
-          <div class="skill-bar-container rounded-lg">
-            <div class="skill-bar master" style="width: 33%"></div>
-          </div>
-          <p class="text-right">MASTER</p>
-        </div>
-        <div class="skill">
-          <p class="mb-2">JavaScript</p>
-          <div class="skill-bar-container rounded-lg">
-            <div class="skill-bar intermediate" style="width: 66%"></div>
-          </div>
-          <p class="text-right">INTERMEDIATE</p>
-        </div>
-        <div class="skill">
-          <p class="mb-2">Retro Design</p>
-          <div class="skill-bar-container rounded-lg">
-            <div class="skill-bar beginner" style="width: 100%"></div>
-          </div>
-          <p class="text-right">BEGINNER</p>
-        </div>
-      </section>
-
-      <section class="mb-12" id="achievements">
-        <h2 class="text-2xl mb-4 text-center">Achievements</h2>
-        <ul class="list-disc list-inside">
-          <li class="mb-2">
-            Won the "Best Retro Website" award at WebDevCon '85
-          </li>
-          <li class="mb-2">
-            Created a time machine using only HTML and CSS (theoretical)
-          </li>
-          <li class="mb-2">Mastered the art of coding without a mouse</li>
-        </ul>
-      </section>
-
-      <footer class="py-8 text-center">
-        <p>&copy; 1985 Retro Developer. All rights reserved.</p>
-      </footer>
     </div>
-
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="modalImage" />
-      <video class="modal-content" id="modalVideo" controls>
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
+    
+    <style>
+    @keyframes signal-search {
+      0% {
+        background-position: 0% 0%;
+        filter: brightness(1) contrast(1);
+      }
+      25% {
+        background-position: -20% -20%;
+        filter: brightness(1.2) contrast(1.2);
+      }
+      50% {
+        background-position: 20% 20%;
+        filter: brightness(0.8) contrast(1.5);
+      }
+      75% {
+        background-position: -10% 10%;
+        filter: brightness(1.1) contrast(0.9);
+      }
+      100% {
+        background-position: 0% 0%;
+        filter: brightness(1) contrast(1);
+      }
+    }
+    
+    @keyframes tv-static {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-1%, -1%); }
+      50% { transform: translate(1%, 1%); }
+      75% { transform: translate(-1%, 1%); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes tv-on {
+      0% {
+        filter: brightness(0);
+        transform: scale(0.98);
+      }
+      20% {
+        filter: brightness(2);
+      }
+      40% {
+        filter: brightness(0.5);
+      }
+      60% {
+        filter: brightness(1.5);
+      }
+      80% {
+        filter: brightness(0.8);
+      }
+      100% {
+        filter: brightness(1);
+        transform: scale(1);
+      }
+    }
+    
+    .tv-frame-content {
+      position: relative;
+      background-color: rgb(31, 41, 55);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .tv-frame-content:hover {
+      transform: scale(1.05);
+    }
+    
+    .tv-screen-content {
+      position: relative;
+      background-color: black;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      height: 100%;
+    }
+    
+    .tv-static-content {
+      position: absolute;
+      inset: 0;
+      opacity: 0.2;
+      background-image: repeating-radial-gradient(circle at 17% 32%, white 0%, black 0.00085%);
+      animation: tv-static 0.2s infinite;
+    }
+    
+    .scanline-content {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 51%);
+      background-size: 100% 4px;
+    }
+    
+    .tv-content-content {
+      padding: 1rem;
+      color: rgb(34, 197, 94);
+      opacity: 0.8;
+      height: 100%;
+      overflow: auto;
+      display: none;
+    }
+    
+    .tv-content-content.active {
+      display: block;
+      animation: tv-on 0.5s ease-out;
+    }
+    
+    .tv-thumbnail {
+      padding: 1rem;
+      color: rgb(34, 197, 94);
+      opacity: 0.8;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      text-align: center;
+      position: relative;
+      animation: signal-search 3s infinite;
+      text-shadow: 2px 2px 4px rgba(34, 197, 94, 0.5);
+    }
+    
+    .tv-thumbnail::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(34, 197, 94, 0.1) 45%,
+        rgba(34, 197, 94, 0.2) 50%,
+        rgba(34, 197, 94, 0.1) 55%,
+        transparent 100%
+      );
+      animation: signal-search 4s infinite;
+    }
+    
+    .tv-label-content {
+      text-align: center;
+      color: white;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .expanded-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 91.666667%;
+      max-width: 42rem;
+      z-index: 50;
+    }
+    
+    .expanded-content .tv-frame-content {
+      cursor: default;
+    }
+    
+    .expanded-content .tv-frame-content:hover {
+      transform: none;
+    }
+    
+    .expanded-content .tv-content-content {
+      opacity: 1;
+    }
+    
+    .tv-content-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .tv-content-content::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .tv-content-content::-webkit-scrollbar-thumb {
+      background: rgb(34, 197, 94, 0.5);
+      border-radius: 4px;
+    }
+    
+    .tv-content-content::-webkit-scrollbar-thumb:hover {
+      background: rgb(34, 197, 94, 0.7);
+    }
+    
+    .pointer-events-none {
+      pointer-events: none;
+    }
+    </style>
+    
+    <script>
+    const tvData = [
+      {
+        id: 1,
+        label: "About Me",
+        thumbnail: "SIGNAL SEARCHING...",
+        content: ` 
+          <h2 class="text-xl mb-4">About Me</h2>
+          <p>Greetings, fellow time traveler! I'm a passionate developer with a love for all things retro.</p>
+        `,
+      },
+      {
+        id: 2,
+        label: "Skills",
+        thumbnail: "SIGNAL SEARCHING...",
+        content: ` 
+          <h2 class="text-xl mb-4">Skills</h2>
+          <ul>
+            <li>HTML/CSS - Master</li>
+            <li>JavaScript - Intermediate</li>
+            <li>Retro Design - Expert</li>
+          </ul>
+        `,
+      },
+      {
+        id: 3,
+        label: "Projects",
+        thumbnail: "SIGNAL SEARCHING...",
+        content: ` 
+          <h2 class="text-xl mb-4">Projects</h2>
+          <ul>
+            <li>Retro Game Collection</li>
+            <li>Vintage Computer Museum</li>
+            <li>Time Machine Interface</li>
+          </ul>
+        `,
+      },
+      {
+        id: 4,
+        label: "Contact",
+        thumbnail: "SIGNAL SEARCHING...",
+        content: ` 
+          <h2 class="text-xl mb-4">Contact</h2>
+          <p>Find me in the retro dimension:</p>
+          <p>🕹️ @retrodev</p>
+          <p>📺 hello@retro.dev</p>
+        `,
+      },
+      {
+        id: 5,
+        label: "Achievements",
+        thumbnail: "SIGNAL SEARCHING...",
+        content: ` 
+          <h2 class="text-xl mb-4">Achievements</h2>
+          <ul>
+            <li>Best Retro Website Award</li>
+            <li>Pixel Perfect Designer 2024</li>
+            <li>Time Travel Champion</li>
+          </ul>
+        `,
+      },
+      {
+        id: 6,
+        label: "Media",
+        thumbnail: "SIGNAL SEARCHING...",
+        content: ` 
+          <h2 class="text-xl mb-4">Media</h2>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="border border-green-500 p-1">Project 1</div>
+            <div class="border border-green-500 p-1">Project 2</div>
+          </div>
+        `,
+      },
+    ];
+    
+    function createTV(data) {
+      const tv = document.createElement("div");
+      tv.className = "tv-item-content";
+      tv.innerHTML = ` 
+        <div class="tv-frame-content">
+          <div class="tv-screen-content">
+            <div class="tv-static-content"></div>
+            <div class="scanline-content"></div>
+            <div class="tv-thumbnail">${data.thumbnail}</div>
+            <div class="tv-content-content">${data.content}</div>
+          </div>
+        </div>
+        <div class="tv-label-content">${data.label}</div>
+      `;
+      return tv;
+    }
+    
+    function initializeTVs() {
+      const container = document.getElementById("tvContainerContent");
+      const overlay = document.getElementById("overlayContent");
+      const closeBtn = document.getElementById("closeBtnContent");
+      let isExpanded = false;
+    
+      tvData.forEach((data) => {
+        const tv = createTV(data);
+        container.appendChild(tv);
+    
+        tv.addEventListener("click", (e) => {
+          if (isExpanded) return;
+          
+          // Expand TV
+          tv.classList.add("expanded-content");
+          const thumbnail = tv.querySelector(".tv-thumbnail");
+          const content = tv.querySelector(".tv-content-content");
+          
+          // Power on effect sequence
+          setTimeout(() => {
+            thumbnail.style.display = "none";
+            content.classList.add("active");
+          }, 100);
+          
+          overlay.style.display = "block";
+          closeBtn.style.display = "block";
+          isExpanded = true;
+    
+          document.querySelectorAll(".tv-item-content").forEach(item => {
+            if (item !== tv) {
+              item.classList.add("pointer-events-none");
+            }
+          });
+        });
+      });
+    
+      function closeExpandedTV() {
+        const expandedTV = document.querySelector(".expanded-content");
+        if (expandedTV) {
+          expandedTV.classList.remove("expanded-content");
+          const thumbnail = expandedTV.querySelector(".tv-thumbnail");
+          const content = expandedTV.querySelector(".tv-content-content");
+          
+          content.classList.remove("active");
+          thumbnail.style.display = "flex";
+          
+          overlay.style.display = "none";
+          closeBtn.style.display = "none";
+          isExpanded = false;
+    
+          document.querySelectorAll(".tv-item-content").forEach(item => {
+            item.classList.remove("pointer-events-none");
+          });
+        }
+      }
+    
+      closeBtn.addEventListener("click", closeExpandedTV);
+      overlay.addEventListener("click", closeExpandedTV);
+    }
+    
+    // Initialize on load
+    window.addEventListener("load", initializeTVs);
+    </script>
     <script>
       gsap.registerPlugin(ScrollTrigger);
 
@@ -623,100 +736,6 @@
             },
           });
       }
-
-      function animateContent() {
-        gsap.from("header", {
-          duration: 1,
-          y: -50,
-          opacity: 0,
-          ease: "power2.out",
-        });
-        gsap.from(".marquee", {
-          duration: 1,
-          x: "100%",
-          ease: "power2.out",
-          delay: 0.5,
-        });
-        gsap.from("section", {
-          duration: 1,
-          y: 50,
-          opacity: 0,
-          ease: "power2.out",
-          stagger: 0.2,
-          delay: 1,
-        });
-
-        gsap.to(".skill-bar", {
-          width: function (index, target) {
-            return target.style.width;
-          },
-          duration: 1.5,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: "#skills",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "restart none none reverse",
-          },
-        });
-
-        gsap.to(".skill-bar", {
-          width: function (index, target) {
-            return target.style.width;
-          },
-          duration: 1.5,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: "#skills",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "restart none none reverse",
-          },
-        });
-      }
-
-      function openModal(src, isVideo = false) {
-        const modal = document.getElementById("myModal");
-        const modalImage = document.getElementById("modalImage");
-        const modalVideo = document.getElementById("modalVideo");
-
-        modal.style.display = "block";
-
-        if (isVideo) {
-          modalVideo.src = src;
-          modalVideo.style.display = "block";
-          modalImage.style.display = "none";
-          setTimeout(() => modalVideo.classList.add("show"), 10);
-        } else {
-          modalImage.src = src;
-          modalImage.style.display = "block";
-          modalVideo.style.display = "none";
-          setTimeout(() => modalImage.classList.add("show"), 10);
-        }
-      }
-
-      function closeModal() {
-        const modal = document.getElementById("myModal");
-        const modalImage = document.getElementById("modalImage");
-        const modalVideo = document.getElementById("modalVideo");
-
-        modalImage.classList.remove("show");
-        modalVideo.classList.remove("show");
-
-        setTimeout(() => {
-          modal.style.display = "none";
-          modalVideo.pause();
-        }, 300);
-      }
-
-      document.querySelector(".close").onclick = closeModal;
-
-      window.onclick = function (event) {
-        const modal = document.getElementById("myModal");
-        if (event.target == modal) {
-          closeModal();
-        }
-      };
     </script>
   </body>
 </html>
