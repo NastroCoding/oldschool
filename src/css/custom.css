@@ -84,9 +84,42 @@ body {
   top: 20%;
   left: 15%;
   width: 70%;
-  height: 55%;
+  height: 60%;
   background: #111;
   overflow: hidden;
+}
+
+@media screen and (max-width:1440px) {
+  .tv-screen{
+    left: 17%;
+    width: 60%;
+    height: 50%;
+  }
+}
+
+@media screen and (max-width:426px) {
+  .tv-screen {
+    left: 25%;
+    width: 50%;
+    height: 40%;
+    top: 15%;
+  }
+}
+
+@media screen and (max-width:376px) {
+  .tv-screen {
+    width: 45%;
+    height: 35%;
+    left: 26%;
+  }
+}
+
+@media screen and (max-width:321px) {
+  .tv-screen {
+    width: 35%;
+    height: 30%;
+    left: 30%;
+  }
 }
 
 .tv-layer {
