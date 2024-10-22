@@ -66,30 +66,11 @@ function enterWebsite() {
       onComplete: () => {
         document.getElementsByTagName("body")[0].style.overflow = "visible";
         document.getElementById("content")?.classList.remove("hidden");
-        document.getElementById("textBackground")?.classList.remove("hidden");
       },
     });
 }
 
 //  CONTENT
-
-const circle = document.querySelector(".circle");
-const glowName = document.getElementById("glowName");
-
-gsap.to(glowName, {
-  duration: 0.5,
-  repeat: -1,
-  yoyo: true,
-  ease: "power2.inOut",
-  onUpdate: function () {
-    const rotation = gsap.getProperty(circle, "rotation");
-    if (rotation % 360 < 180) {
-      glowName.style.animation = "pixelFlicker 1s infinite alternate";
-    } else {
-      glowName.style.animation = "none";
-    }
-  },
-});
 
 const tvData = [
   {

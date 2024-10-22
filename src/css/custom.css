@@ -82,9 +82,9 @@ body {
 .tv-screen {
   position: absolute;
   top: 20%;
-  left: 15%;
-  width: 70%;
-  height: 60%;
+  left: 16%;
+  width: 65%;
+  height: 56%;
   background: #111;
   overflow: hidden;
 }
@@ -224,46 +224,13 @@ body {
   }
 }
 
-.background-text {
-  position: fixed;
-  top: -400px;
-  left: -300px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  font-family: "Press Start 2P", cursive;
-  font-size: clamp(1rem, 3vw, 2rem);
-  color: rgba(255, 215, 0, 0.15);
-  user-select: none;
-  pointer-events: none;
-  z-index: -1;
-  padding: 2rem;
-  overflow: hidden;
-  text-align: center;
-}
-
-.background-text p {
-  animation: textFloat 20s linear infinite;
-  width: 100%;
-  white-space: pre-wrap;
-}
-
-@keyframes textFloat {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
 .circle-container {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 20vh;
+  padding: 5vh 0;
 }
 
 #glowName {
@@ -273,6 +240,17 @@ body {
   font-weight: bold;
   transition: opacity 0.3s ease;
   text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+  animation: pixelFlicker 1.3s infinite alternate;
+}
+
+#glowSub {
+  font-size: 1rem;
+  color: #ffd700;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+  animation: pixelFlicker 2s infinite alternate;
 }
 
 @keyframes pixelFlicker {
