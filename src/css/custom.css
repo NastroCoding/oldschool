@@ -89,6 +89,30 @@ body {
   overflow: hidden;
 }
 
+
+.tv-layer {
+  position: absolute;
+  width: 80vmin;
+  height: 60vmin;
+  transform-style: preserve-3d;
+  background: transparent;
+  overflow: hidden;
+}
+
+.tv-screen::before,
+.tv-layer .tv-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 50%, rgba(211, 211, 211, 0.534) 50%);
+  background-size: 100% 4px;
+  animation: scan 1s linear infinite;
+  pointer-events: none;
+}
+
 @media screen and (max-width:1440px) {
   .tv-screen{
     left: 17%;
@@ -116,33 +140,20 @@ body {
 
 @media screen and (max-width:321px) {
   .tv-screen {
-    width: 35%;
-    height: 30%;
-    left: 30%;
+    width: 70%;
+    height: 45%;
+    left: 15%;
   }
-}
 
-.tv-layer {
-  position: absolute;
-  width: 80vmin;
-  height: 60vmin;
-  transform-style: preserve-3d;
-  background: transparent;
-  overflow: hidden;
-}
+  .tv {
+    height: 35vh;
+    width: 35vh;
+  }
 
-.tv-screen::before,
-.tv-layer .tv-screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(transparent 50%, rgba(211, 211, 211, 0.534) 50%);
-  background-size: 100% 4px;
-  animation: scan 1s linear infinite;
-  pointer-events: none;
+  .tv-layer {
+    width: 35vh;
+    height: 35vh;
+  }
 }
 
 @keyframes scan {
