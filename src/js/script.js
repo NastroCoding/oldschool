@@ -36,7 +36,7 @@ function enterWebsite() {
   const isSmallScreen = window.innerWidth < 600;
 
   // Adjust transformOrigin based on the screen size
-  const transformOriginValue = isSmallScreen ? "50% 30%" : "50% 50%";
+  const transformOriginValue = isSmallScreen ? "50% 50%" : "50% 50%";
 
   tl.to(".tv-content", {
     duration: 0.3,

@@ -133,15 +133,25 @@ body {
 @media screen and (max-width:376px) {
   .tv-screen {
     width: 45%;
-    height: 35%;
-    left: 26%;
+    height: 40%;
+    left: 20%;
+  }
+
+  .tv {
+    height: 35vh;
+    width: 35vh;
+  }
+
+  .tv-layer {
+    width: 35vh;
+    height: 35vh;
   }
 }
 
 @media screen and (max-width:321px) {
   .tv-screen {
     width: 70%;
-    height: 45%;
+    height: 40%;
     left: 15%;
   }
 
