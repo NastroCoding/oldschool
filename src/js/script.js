@@ -31,19 +31,26 @@ function enterWebsite() {
   const layers = gsap.utils.toArray(".tv-layer");
   const backtext = document.getElementById("background-text-content");
   const tl = gsap.timeline();
+  
+  // Determine if the screen is smaller and adjust transform origin dynamically
+  const isSmallScreen = window.innerWidth < 600;
 
-  // Zoom through each TV layer
+  // Adjust transformOrigin based on the screen size
+  const transformOriginValue = isSmallScreen ? "50% 30%" : "50% 50%";
+
   tl.to(".tv-content", {
     duration: 0.3,
     scale: 0.8,
     opacity: 0,
+    transformOrigin: transformOriginValue, // Adjusted for small screens
     ease: "power2.in",
   })
     .to(".tv", {
       duration: 1,
       scale: 4,
-      z: 1000,
+      z: 2000,
       opacity: 0,
+      transformOrigin: transformOriginValue, // Adjusted for small screens
       ease: "power2.in",
     })
     .to(
@@ -54,6 +61,7 @@ function enterWebsite() {
         z: 1000,
         opacity: 0,
         stagger: 0.2,
+        transformOrigin: transformOriginValue, // Fix for the bottom being empty
         ease: "power2.in",
       },
       "-=0.8"
@@ -71,6 +79,7 @@ function enterWebsite() {
       },
     });
 }
+
 
 //  CONTENT
 
