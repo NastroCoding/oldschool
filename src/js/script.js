@@ -66,6 +66,8 @@ function enterWebsite() {
       onComplete: () => {
         document.getElementsByTagName("body")[0].style.overflow = "visible";
         document.getElementById("content")?.classList.remove("hidden");
+        document.getElementById('textBackground')?.classList.remove('opacity-80');
+        document.getElementById('textBackground')?.classList.add('opacity-10');
       },
     });
 }
