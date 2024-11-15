@@ -36,7 +36,7 @@ function enterWebsite() {
   const isSmallScreen = window.innerWidth < 600;
 
   // Adjust transformOrigin based on the screen size
-  const transformOriginValue = isSmallScreen ? "50% 50%" : "50% 50%";
+  const transformOriginValue = isSmallScreen ? "50% 30%" : "50% 50%";
 
   tl.to(".tv-content", {
     duration: 0.3,
@@ -74,8 +74,8 @@ function enterWebsite() {
       onComplete: () => {
         document.getElementsByTagName("body")[0].style.overflow = "visible";
         document.getElementById("content")?.classList.remove("hidden");
-        document.getElementById('textBackground')?.classList.remove('opacity-80');
-        document.getElementById('textBackground')?.classList.add('opacity-10');
+        document.getElementById('textBackground').classList.remove('opacity-80');
+        document.getElementById('textBackground').classList.add('opacity-10');
       },
     });
 }
@@ -192,105 +192,6 @@ function createTV(data) {
         <div class="tv-label-content">${data.label}</div>
       `;
   return tv;
-}
-
-function initializeTVs() {
-  const container = document.getElementById("tvContainerContent");
-  const overlay = document.getElementById("overlayContent");
-  const closeBtn = document.getElementById("closeBtnContent");
-  let isExpanded = false;
-
-  tvData.forEach((data) => {
-    const tv = createTV(data);
-    container.appendChild(tv);
-
-    tv.addEventListener("click", (e) => {
-      if (isExpanded) return;
-
-      // Expand TV
-      tv.classList.add("expanded-content");
-      const thumbnail = tv.querySelector(".tv-thumbnail");
-      const content = tv.querySelector(".tv-content-content");
-
-      // Power on effect sequence
-      setTimeout(() => {
-        thumbnail.style.display = "none";
-        content.classList.add("active");
-      }, 100);
-
-      overlay.style.display = "block";
-      closeBtn.style.display = "block";
-      isExpanded = true;
-
-      document.querySelectorAll(".tv-item-content").forEach((item) => {
-        if (item !== tv) {
-          item.classList.add("pointer-events-none");
-        }
-      });
-    });
-  });
-
-  function closeExpandedTV() {
-    const expandedTV = document.querySelector(".expanded-content");
-    if (expandedTV) {
-      expandedTV.classList.remove("expanded-content");
-      const thumbnail = expandedTV.querySelector(".tv-thumbnail");
-      const content = expandedTV.querySelector(".tv-content-content");
-
-      content.classList.remove("active");
-      thumbnail.style.display = "flex";
-
-      overlay.style.display = "none";
-      closeBtn.style.display = "none";
-      isExpanded = false;
-
-      document.querySelectorAll(".tv-item-content").forEach((item) => {
-        item.classList.remove("pointer-events-none");
-      });
-    }
-  }
-
-  closeBtn.addEventListener("click", closeExpandedTV);
-  overlay.addEventListener("click", closeExpandedTV);
-}
-function initializeInterface() {
-  // Clock Display
-  function updateClock() {
-    const now = new Date();
-    const timeDisplay = document.getElementById("clockDisplay");
-    timeDisplay.textContent = now.toTimeString().split(" ")[0];
-  }
-  setInterval(updateClock, 1000);
-
-  // Channel Number
-  let currentChannel = 0;
-  function updateChannel() {
-    currentChannel = (currentChannel + 1) % 100;
-    const channelDisplay = document.getElementById("channelNumber");
-    channelDisplay.textContent = currentChannel.toString().padStart(2, "0");
-  }
-  setInterval(updateChannel, 3000);
-
-  // Enhanced TV Content
-  tvData.forEach((data) => {
-    data.content = `
-      <div class="retro-header mb-4 border-b border-green-500 pb-2">
-        <div class="text-xs mb-1">CHANNEL ${data.id
-          .toString()
-          .padStart(2, "0")}</div>
-        <h2 class="text-xl">${data.label}</h2>
-      </div>
-      <div class="content-body">
-        ${data.content}
-      </div>
-      <div class="retro-footer mt-4 text-xs">
-        <div class="signal-strength">SIGNAL STRENGTH: ▂ ▃ ▅ ▂ ▇</div>
-        <div class="frequency">FREQUENCY: ${(87.5 + data.id * 0.2).toFixed(
-          1
-        )} MHz</div>
-      </div>
-    `;
-  });
 }
 
 // Initialize GSAP animations
