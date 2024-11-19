@@ -15,64 +15,7 @@
   </head>
 
   <body class="crt">
-    <div id="intro" class="tv-layers">
-      <div class="tv-container">
-        <!-- Main TV -->
-        <div class="tv">
-          <div class="tv-frame"></div>
-          <div class="tv-screen">
-            <div class="static"></div>
-          </div>
-          <div
-            class="tv-content flex flex-col justify-center items-center absolute inset-0 opacity-0 text-center"
-          ></div>
-        </div>
-
-        <!-- Layer 2 TV -->
-        <div
-          class="tv-layer"
-          style="transform: scale(0.8) translateZ(-600px) rotate(15deg)"
-        >
-          <div class="tv-frame"></div>
-          <div class="tv-screen">
-            <div class="static"></div>
-          </div>
-        </div>
-
-        <!-- Layer 3 TV -->
-        <div
-          class="tv-layer"
-          style="transform: scale(0.6) translateZ(-700px) rotate(30deg)"
-        >
-          <div class="tv-frame"></div>
-          <div class="tv-screen">
-            <div class="static"></div>
-          </div>
-        </div>
-
-        <!-- Layer 4 TV -->
-        <div
-          class="tv-layer"
-          style="transform: scale(0.4) translateZ(-1100px) rotate(45deg)"
-        >
-          <div class="tv-frame"></div>
-          <div class="tv-screen">
-            <div class="static"></div>
-          </div>
-        </div>
-
-        <!-- Layer 5 TV -->
-        <div
-          class="tv-layer"
-          style="transform: scale(0.2) translateZ(-1700px) rotate(60deg)"
-        >
-          <div class="tv-frame"></div>
-          <div class="tv-screen">
-            <div class="static"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div id="content" class="w-full mx-auto">
       <div
@@ -118,14 +61,20 @@
             animation: vhsGlitch 6s infinite;
         }
 
+        .non-vhs {
+            position: relative;
+            color: #fff;
+            text-shadow: 2px 2px #ff0080, -2px -2px #00ff00;
+        }
+
         @keyframes vhsGlitch {
             0%, 100% { transform: translate(0); }
             10% { transform: translate(-1px, 1px); }
             20% { transform: translate(1px, -1px); }
             30% { transform: skewX(1deg); }
-            40% { transform: skewX(-1deg); }
+            40% { transform: skewX(0deg); }
             50% { transform: skewY(1deg); }
-            60% { transform: skewY(-1deg); }
+            60% { transform: skewY(0deg); }
             70% { transform: translate(1px, 1px); }
             80% { transform: translate(-1px, -1px); }
             90% { transform: scale(1.01); }
@@ -139,7 +88,7 @@
             <div class="flex justify-between">
                 <div class="flex space-x-7">
                     <div class="flex items-center py-4">
-                        <span class="font-bold text-xl">CHANNEL.DEV</span>
+                        <span class="font-bold text-xl">NAS</span>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
@@ -157,7 +106,7 @@
     <section id="home" class="min-h-screen flex items-center justify-center tv-static">
         <div class="text-center relative crt-frame bg-black bg-opacity-90 p-16">
             <h1 class="text-5xl font-bold mb-4 vhs-text">Naufal Aqil Nasrullah</h1>
-            <p class="text-xl mb-8 text-yellow-400">Full Stack Developer // Content Creator</p>
+            <p class="text-xl mb-8 text-yellow-400">Web Developer || Programmer</p>
             <div class="space-x-4">
                 <a href="#shows" class="bg-yellow-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-700 transition duration-300 inline-block">View Shows</a>
                 <a href="#contact" class="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition duration-300 inline-block">Subscribe Now</a>
@@ -166,9 +115,9 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-900">
+    <section id="about" class="py-20 bg-gray-900 scroll-mt-14">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 vhs-text">Behind The Scenes</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 non-vhs">Behind The Scenes</h2>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="crt-frame p-8 bg-black">
                     <img src="./src/assets/img/profile.png" alt="About" class="rounded-lg shadow-lg channel-transition mx-auto">
@@ -193,9 +142,9 @@
     </section>
 
     <!-- Shows Section -->
-    <section id="shows" class="py-20 bg-black tv-static">
+    <section id="shows" class="py-20 bg-black tv-static scroll-mt-14">
         <div class="max-w-6xl mx-auto px-4 relative">
-            <h2 class="text-4xl font-bold text-center mb-12 vhs-text">Featured Shows</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 non-vhs">Featured Shows</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-gray-900 rounded-lg overflow-hidden channel-transition crt-frame">
                     <div class="relative">
@@ -246,9 +195,9 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-900">
+    <section id="projects" class="py-20 bg-gray-900 scroll-mt-14">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 vhs-text">Latest Projects</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 non-vhs">Latest Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-black p-6 rounded-lg crt-frame channel-transition">
                     <img src="/api/placeholder/400/300" alt="Project 1" class="w-full h-48 object-cover rounded mb-4">
@@ -278,9 +227,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-black tv-static">
+    <section id="contact" class="py-20 bg-black tv-static scroll-mt-14">
       <div class="max-w-4xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 vhs-text">Subscribe & Connect</h2>
+          <h2 class="text-4xl font-bold text-center mb-12 non-vhs">Subscribe & Connect</h2>
           <div class="bg-gray-900 rounded-lg shadow-lg p-8 crt-frame">
               <form class="space-y-6">
                   <div class="grid md:grid-cols-2 gap-6">
@@ -304,9 +253,9 @@
   </section>
 
   <!-- Schedule Section -->
-  <section class="py-20 bg-gray-900">
+  <section class="py-20 bg-gray-900 scroll-mt-14">
       <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 vhs-text">Stream Schedule</h2>
+          <h2 class="text-4xl font-bold text-center mb-12 non-vhs">Stream Schedule</h2>
           <div class="grid md:grid-cols-3 gap-8">
               <div class="bg-black p-6 rounded-lg crt-frame channel-transition">
                   <h3 class="text-xl font-bold text-yellow-400 mb-4">Weekdays</h3>
@@ -395,7 +344,7 @@
               </div>
           </div>
           <div class="text-center text-gray-400 pt-8 border-t border-gray-800">
-              <p>© 2024 Channel.Dev. All rights reserved.</p>
+              <p>© 2024 Nas. All rights reserved.</p>
           </div>
       </div>
   </footer>
@@ -414,7 +363,7 @@
           element.addEventListener('mouseenter', () => {
               gsap.to(element, {
                   scale: 1.05,
-                  duration: 0.3,
+                  duration: 0.1,
                   ease: 'power2.out'
               });
           });

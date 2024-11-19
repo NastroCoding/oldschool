@@ -212,7 +212,7 @@ gsap.from(".tv-item-content", {
 });
 
 const textBackground = document.getElementById("textBackground");
-const text = "THEMIDNIGHTCHANNELTVWORLDGOLDENERA";
+const text = "THEMIDNIGHTCHANNEL";
 
 function fillBackground() {
   // Clear existing content
