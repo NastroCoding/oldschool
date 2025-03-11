@@ -75,6 +75,10 @@
     </div>
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
       @keyframes tvStatic {
         0% {
           background-position: 0 0;
@@ -175,7 +179,32 @@
                 <span class="font-bold text-xl text-gray-800">NAS</span>
               </div>
             </div>
-            <div class="flex items-center space-x-6">
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+              <button
+                id="mobile-menu-button"
+                class="text-gray-800 focus:outline-none"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Desktop menu -->
+            <div class="hidden md:flex items-center space-x-6">
               <a
                 href="#home"
                 class="py-4 px-2 text-gray-800 hover:text-white hover:bg-gray-800 transition-colors duration-300 font-bold"
@@ -204,21 +233,57 @@
             </div>
           </div>
         </div>
+
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-yellow-400 border-t-2 border-gray-800"
+        >
+          <a
+            href="#home"
+            class="block py-3 px-4 text-gray-800 hover:text-white hover:bg-gray-800 transition-colors duration-300 font-bold"
+            >HOME</a
+          >
+          <a
+            href="#about"
+            class="block py-3 px-4 text-gray-800 hover:text-white hover:bg-gray-800 transition-colors duration-300 font-bold"
+            >ABOUT</a
+          >
+          <a
+            href="#shows"
+            class="block py-3 px-4 text-gray-800 hover:text-white hover:bg-gray-800 transition-colors duration-300 font-bold"
+            >SHOWS</a
+          >
+          <a
+            href="#projects"
+            class="block py-3 px-4 text-gray-800 hover:text-white hover:bg-gray-800 transition-colors duration-300 font-bold"
+            >PROJECTS</a
+          >
+          <a
+            href="#contact"
+            class="block py-3 px-4 text-gray-800 hover:text-white hover:bg-gray-800 transition-colors duration-300 font-bold"
+            >CONTACT</a
+          >
+        </div>
       </nav>
 
       <!-- Hero Section -->
       <section
         id="home"
-        class="min-h-screen flex items-center justify-center bg-gray-800 bg-opacity-95"
+        class="min-h-screen flex items-center justify-center bg-gray-800 bg-opacity-95 px-4"
       >
         <div
-          class="text-center relative bg-yellow-400 p-16 shadow-xl transform -rotate-1"
+          class="text-center relative bg-yellow-400 p-6 md:p-16 shadow-xl transform -rotate-1"
         >
-          <h1 class="text-5xl font-bold mb-4 text-gray-800">
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
             Naufal Aqil Nasrullah
           </h1>
-          <p class="text-xl mb-8 text-gray-800">Web Developer // Programmer</p>
-          <div class="space-x-4">
+          <p class="text-lg md:text-xl mb-8 text-gray-800">
+            Web Developer // Programmer
+          </p>
+          <div
+            class="space-y-3 md:space-y-0 md:space-x-4 flex flex-col md:flex-row justify-center"
+          >
             <a
               href="#shows"
               class="bg-gray-800 text-yellow-400 px-6 py-3 rounded-md font-semibold hover:bg-gray-900 transition duration-300 inline-block"
@@ -234,15 +299,17 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-20 bg-yellow-400 scroll-mt-14">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+      <section id="about" class="py-20 bg-yellow-400 scroll-mt-14 px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800"
+          >
             Behind The Scenes
           </h2>
           <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="bg-white p-8 shadow-lg transform rotate-1">
               <img
-                src="./src/assets/img/profile.png"
+                src="src/assets/img/profile.png"
                 alt="About"
                 class="rounded-lg shadow-lg mx-auto border-4 border-gray-800"
               />
@@ -260,7 +327,7 @@
                   <li>UI/UX Design</li>
                 </ul>
               </div>
-              <div class="flex space-x-4">
+              <div class="flex flex-wrap gap-4">
                 <a
                   href="#"
                   class="bg-gray-800 text-yellow-400 px-6 py-3 rounded-md hover:bg-gray-900 transition duration-300"
@@ -278,12 +345,14 @@
       </section>
 
       <!-- Shows Section -->
-      <section id="shows" class="py-20 bg-gray-800 scroll-mt-14">
-        <div class="max-w-6xl mx-auto px-4 relative">
-          <h2 class="text-4xl font-bold text-center mb-12 text-yellow-400">
+      <section id="shows" class="py-20 bg-gray-800 scroll-mt-14 px-4">
+        <div class="max-w-6xl mx-auto relative">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-400"
+          >
             Featured Shows
           </h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
               class="bg-yellow-400 rounded-md overflow-hidden shadow-lg transform hover:-rotate-2 transition-transform duration-300"
             >
@@ -379,12 +448,14 @@
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="py-20 bg-yellow-400 scroll-mt-14">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+      <section id="projects" class="py-20 bg-yellow-400 scroll-mt-14 px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800"
+          >
             Latest Projects
           </h2>
-          <div class="grid md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div
               class="bg-white p-6 rounded-md shadow-lg border-t-8 border-gray-800 transform hover:rotate-1 transition-transform duration-300"
             >
@@ -455,13 +526,15 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-gray-800 scroll-mt-14">
-        <div class="max-w-4xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 text-yellow-400">
+      <section id="contact" class="py-20 bg-gray-800 scroll-mt-14 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center mb-12 text-yellow-400"
+          >
             Subscribe & Connect
           </h2>
           <div
-            class="bg-yellow-400 rounded-md shadow-lg p-8 transform -rotate-1"
+            class="bg-yellow-400 rounded-md shadow-lg p-6 md:p-8 transform -rotate-1"
           >
             <form class="space-y-6">
               <div class="grid md:grid-cols-2 gap-6">
@@ -507,12 +580,14 @@
       </section>
 
       <!-- Schedule Section -->
-      <section class="py-20 bg-yellow-400 scroll-mt-14">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+      <section class="py-20 bg-yellow-400 scroll-mt-14 px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800"
+          >
             Stream Schedule
           </h2>
-          <div class="grid md:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
               class="bg-white p-6 rounded-md shadow-lg border-l-8 border-gray-800 transform hover:-rotate-1 transition-transform duration-300"
             >
@@ -684,6 +759,22 @@
       </style>
 
       <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+
         // Hero section animation
         gsap.from(".crt-frame", {
           duration: 1,
