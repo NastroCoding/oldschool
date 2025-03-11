@@ -212,7 +212,7 @@ gsap.from(".tv-item-content", {
 });
 
 const textBackground = document.getElementById("textBackground");
-const text = "THEMIDNIGHTCHANNEL";
+const text = "THEMIDNIGHTCHANNELGOLDENERATHEMIDNIGHTCHANNEL";
 
 function fillBackground() {
   // Clear existing content
